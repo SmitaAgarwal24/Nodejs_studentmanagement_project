@@ -1,0 +1,15 @@
+{
+    "createStudent": "insert into schoolusers(id, password, access, accesscontrol) values($1, $2, $3, $4)",
+    "getUserbyUserId": "select * from schoolusers where id = $1",
+    "getStudent": 
+    "select marks.studentid, marks.subjectid, marks.subject_marks, studentsinfo.student_name, studentsinfo.cumulativemarks from marks inner join studentsinfo on marks.studentid = studentsinfo.id where studentsinfo.id =$1",
+    "createSubject": "insert into subject(subjectid, subjectname, classname, passmarks) values($1, $2, $3, $4)",
+    "insertAdminTeacher": "insert into admin_teacherinfo(id, name, phone, address) values($1, $2, $3, $4)",
+    "insertMarks": "insert into marks(studentid, subjectid, subject_marks) values($1, $2, $3)",
+    "updatetMarks": " update marks set subject_marks = $3 where studentid = $1 and subjectid = $2",
+    "calculateMarks": "update studentsinfo set cumulativemarks = (select sum(subject_marks) from marks where studentid =$1)",
+    "deleteStudent": "delete from schoolusers where id = $1",
+    "insertStudentInfo": "insert into studentsinfo(id, student_name, roll) values ($1, $2, $3) ",
+    "getStudentInfo": "update studentsinfo set cumulativemarks"
+}
+
